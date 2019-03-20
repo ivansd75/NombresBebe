@@ -26,9 +26,25 @@ app.post("/",function(req,res){
   //Declaro 2 arrays de NOMBRES
   var nombresNene=["Andrés","Julián","Pelayo","Martin","Rodrigo"];
   var nombresNena=["Jimena","Sandra","Andrea","Petra","Lucía"];
-  //Escogemos aleatoriamente un nombre
-  
 
+  //Escogemos aleatoriamente un nombre
+  // 1. Genero un número aleatorio entre 0 y X-1, siendo X
+  // el número de nombres total del que dispongo
+  // Ese número será la posición en el array de nombres
+  // En mi caso sería entre 0 y 4
+
+
+  var posicion=Math.round(Math.random()*(nombresNene.length-1));
+  console.log(posicion);
+
+  //Comprobamos si es niño o niña y respondemos con un nombre
+  res.writeHead(200, {"Content-Type": "text/html;charset=UTF-8"});
+  if (sexo==="1"){
+    //Es niño
+    res.write("<h1>Enhorabuena!!</h1>");
+    res.write("<h2>Puedes llamarle "+nombresNene[posicion]+" "+apellidoPaterno+" "+apellidoMaterno+"</h2>");
+    res.send();
+  }
 });
 
 //Arranca el servidor
